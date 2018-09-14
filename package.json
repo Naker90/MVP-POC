@@ -1,0 +1,11 @@
+{
+  "name": "mvp-poc",
+  "version": "0.0.1",
+  "description": "Proof of concept of MVP pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Sánchez",
+  "license": "ISC"
+}
