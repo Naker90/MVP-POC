@@ -10,9 +10,14 @@ function view(){
         throw new Error("not implemented");
     }
 
+    function showErrorMessage(){
+        throw new Error("not implemented");
+    }
+
     return {
         subscribeToRegisterPersonRequested: subscribeToRegisterPersonRequested,
-        showSuccessMessage: showSuccessMessage
+        showSuccessMessage: showSuccessMessage,
+        showErrorMessage: showErrorMessage
     }
 }
 

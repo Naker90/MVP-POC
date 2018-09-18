@@ -1,7 +1,8 @@
 jest.mock("./registerPersonView", ()=>{
     return {
         subscribeToRegisterPersonRequested: jest.fn(),
-        showSuccessMessage: jest.fn()
+        showSuccessMessage: jest.fn(),
+        showErrorMessage: jest.fn()
     }
 });
 jest.mock("./registerPersonClient", ()=>{
@@ -42,4 +43,21 @@ test("shows success message when register person successfully", () => {
     registerPersonRequestedHandler(person);
 
     expect(view.showSuccessMessage).toHaveBeenCalled();
+});
+
+test("shows error message when register person fail", () => {
+    const person = {
+        name: "anyName",
+        surname: "anySurname",
+        email: "any@email.com",
+        telephone: "666222444"
+    };
+    client.registerPerson
+        .mockImplementation((request, successHandler, errorHandler) => {
+            errorHandler();
+        });
+
+    registerPersonRequestedHandler(person);
+
+    expect(view.showErrorMessage).toHaveBeenCalled();
 });

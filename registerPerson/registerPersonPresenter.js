@@ -9,10 +9,14 @@ function presenter(view, client) {
             email: personData.email,
             telephone: personData.telephone
         };
-        client.registerPerson(request, successCallback);
+        client.registerPerson(request, successCallback, errorHandler);
 
         function successCallback(){
             view.showSuccessMessage();
+        }
+
+        function errorHandler(){
+            view.showErrorMessage();
         }
     }
 }
