@@ -25,17 +25,43 @@ function view(){
 
     let registerPersonRequestedHandler = () => {};
 
+    let name, surname, email, telephone, registerButton, message;
+
+    function initialize(){
+        name = document.getElementById("name");
+        surname = document.getElementById("surname");
+        email = document.getElementById("email");
+        telephone = document.getElementById("telephone");
+        registerButton = document.getElementById("registerButton");
+        message = document.getElementById("message");
+
+        registerButton.addEventListener("click", function(){
+            registerPersonRequestedHandler({
+                name: name.textContent,
+                surname: surname.textContent,
+                email: email.textContent,
+                telephone: telephone.textContent
+            })
+        });
+    }
+
     function subscribeToRegisterPersonRequested(handler){
         registerPersonRequestedHandler = handler;
     }
 
     function showSuccessMessage(){
-        throw new Error("not implemented");
+        message.innerHTML = "Persona registrada con exito."
+        message.classList.remove('display: none');
+        message.classList.remove('color: green');
     }
 
     function showErrorMessage(){
-        throw new Error("not implemented");
+        message.innerHTML = "Hubo un problema, intentelo de nuevo en unos minutos."
+        message.classList.remove('display: none');
+        message.classList.remove('color: red');
     }
+
+    initialize();
 
     return {
         subscribeToRegisterPersonRequested: subscribeToRegisterPersonRequested,
@@ -46,8 +72,16 @@ function view(){
 
 function client(){
 
-    function registerPerson(){
-        throw new Error("not implemented")
+    function registerPerson(request, successCallback, errorCallback){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                successCallback();
+            }
+            errorCallback();
+        };
+        xhttp.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+        xhttp.send(request);
     }
 
     return {
