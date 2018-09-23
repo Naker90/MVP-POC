@@ -6,7 +6,9 @@ function client(){
             if (this.status === 201) {
                 successCallback();
             }
-            errorCallback();
+            if(this.status === 500){
+                errorCallback();
+            }
         };
         xhttp.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
         xhttp.send(request);
