@@ -4,7 +4,8 @@
   "description": "Proof of concept of MVP pattern",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack"
   },
   "author": "Antonio Sánchez",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.12.1",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1"
   }
 }

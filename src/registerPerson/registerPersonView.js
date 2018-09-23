@@ -47,4 +47,4 @@ function view(){
     }
 }
 
-module.exports = view();
+module.exports = view;
