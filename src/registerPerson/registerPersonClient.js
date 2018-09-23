@@ -3,7 +3,7 @@ function client(){
     function registerPerson(request, successCallback, errorCallback){
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 201) {
+            if (this.status === 201) {
                 successCallback();
             }
             errorCallback();

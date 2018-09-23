@@ -27,15 +27,15 @@ function view(){
     }
 
     function showSuccessMessage(){
-        message.innerHTML = "Persona registrada con exito."
-        message.classList.remove('display: none');
-        message.classList.add('color: green');
+        message.innerHTML = "Persona registrada con exito.";
+        message.style.display = 'block';
+        message.style.color = "green";
     }
 
     function showErrorMessage(){
-        message.innerHTML = "Hubo un problema, intentelo de nuevo en unos minutos."
-        message.classList.remove('display: none');
-        message.classList.add('color: red');
+        message.innerHTML = "Hubo un problema, intentelo de nuevo en unos minutos.";
+        message.style.display = 'block';
+        message.style.color = "red";
     }
 
     initialize();
