@@ -29,13 +29,13 @@ function view(){
     function showSuccessMessage(){
         message.innerHTML = "Persona registrada con exito."
         message.classList.remove('display: none');
-        message.classList.remove('color: green');
+        message.classList.add('color: green');
     }
 
     function showErrorMessage(){
         message.innerHTML = "Hubo un problema, intentelo de nuevo en unos minutos."
         message.classList.remove('display: none');
-        message.classList.remove('color: red');
+        message.classList.add('color: red');
     }
 
     initialize();
