@@ -10,9 +10,9 @@ jest.mock("./registerPersonClient", ()=>{
         registerPerson: jest.fn()
     }
 });
-const view = require("./registerPersonView");
-const client = require("./registerPersonClient");
-const presenter = require("./registerPersonPresenter");
+const view = require("./../../src/registerPerson/registerPersonView");
+const client = require("./../../src/registerPerson/registerPersonClient");
+const presenter = require("./../../src/registerPerson/registerPersonPresenter");
 
 let registerPersonRequestedHandler = () => {};
 
