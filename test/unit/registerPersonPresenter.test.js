@@ -1,11 +1,11 @@
-jest.mock("./registerPersonView", ()=>{
+jest.mock("./../../src/registerPerson/registerPersonView", ()=>{
     return {
         subscribeToRegisterPersonRequested: jest.fn(),
         showSuccessMessage: jest.fn(),
         showErrorMessage: jest.fn()
     }
 });
-jest.mock("./registerPersonClient", ()=>{
+jest.mock("./../../src/registerPerson/registerPersonClient", ()=>{
     return {
         registerPerson: jest.fn()
     }
