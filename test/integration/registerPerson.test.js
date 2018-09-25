@@ -18,6 +18,16 @@ describe("register person", function(){
        expect(document.querySelector("h1")).not.toBeNull();
     });
 
+    it("shows success message when register person", function(){
+        let message = document.getElementById("message");
+        let button = document.getElementById("registerButton");
+
+        //async
+       button.click();
+
+       expect(message.style.color).toBe("green");
+    });
+
     function loadTemplate(viewPath, onLoad){
         const filePath = path.join(__dirname, viewPath);
         fs.readFile(filePath, {encoding: "utf-8"}, function(error, data){
