@@ -1,3 +1,9 @@
+jest.mock("./../../src/registerPerson/registerPersonClient", ()=>{
+    return {
+        registerPerson: jest.fn()
+    }
+});
+
 const fs = require("fs");
 const path = require("path");
 const view = require("./../../src/registerPerson/registerPersonView");
@@ -9,7 +15,7 @@ describe("register person", function(){
     beforeEach(function (done) {
         loadTemplate("../../src/index.html", function (html) {
             document.body.innerHTML = html;
-            presenter(view(), client());
+            presenter(view(), client);
             done();
         });
     });
@@ -21,11 +27,27 @@ describe("register person", function(){
     it("shows success message when register person", function(){
         let message = document.getElementById("message");
         let button = document.getElementById("registerButton");
+        client.registerPerson
+            .mockImplementation((request, successHandler) => {
+                successHandler();
+            });
 
-        //async
-       button.click();
+        button.click();
 
        expect(message.style.color).toBe("green");
+    });
+
+    it("shows error message when register person", function(){
+        let message = document.getElementById("message");
+        let button = document.getElementById("registerButton");
+        client.registerPerson
+            .mockImplementation((request, successHandler, errorHandler) => {
+                errorHandler();
+            });
+
+        button.click();
+
+        expect(message.style.color).toBe("red");
     });
 
     function loadTemplate(viewPath, onLoad){
