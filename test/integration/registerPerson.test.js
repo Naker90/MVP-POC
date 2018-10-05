@@ -26,26 +26,26 @@ describe("register person", function(){
 
     it("shows success message when register person", function(){
         let message = document.getElementById("message");
-        let button = document.getElementById("registerButton");
+        let registerButton = document.getElementById("registerButton");
         client.registerPerson
             .mockImplementation((request, successHandler) => {
                 successHandler();
             });
 
-        button.click();
+        registerButton.click();
 
        expect(message.style.color).toBe("green");
     });
 
     it("shows error message when register person", function(){
         let message = document.getElementById("message");
-        let button = document.getElementById("registerButton");
+        let registerButton = document.getElementById("registerButton");
         client.registerPerson
             .mockImplementation((request, successHandler, errorHandler) => {
                 errorHandler();
             });
 
-        button.click();
+        registerButton.click();
 
         expect(message.style.color).toBe("red");
     });
